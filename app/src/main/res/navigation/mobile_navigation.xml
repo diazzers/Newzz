@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.diazzers.newzz.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_categories"
+        android:name="com.diazzers.newzz.ui.categories.CategoriesFragment"
+        android:label="@string/title_categories"
+        tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="com.diazzers.newzz.ui.user.UserFragment"
+        android:label="@string/title_user"
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.diazzers.newzz.ui.article.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
+</navigation>
