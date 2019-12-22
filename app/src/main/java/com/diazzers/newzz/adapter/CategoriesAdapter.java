@@ -4,10 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.diazzers.newzz.OnItemClickListener;
 import com.diazzers.newzz.R;
 import com.diazzers.newzz.pojo.Article;
 import com.diazzers.newzz.pojo.Category;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder> {
 
+    private OnItemClickListener listener;
+
     private ArrayList<Category> categoriesList = new ArrayList<>();
 
     public void addData(ArrayList<Category> categoriesList) {
@@ -25,21 +29,38 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         notifyDataSetChanged();
     }
 
+    public void addOnClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+
+    }
+
     public class CategoriesViewHolder extends RecyclerView.ViewHolder {
         TextView categoryTextView;
         ImageView categoryImageView;
+        LinearLayout categoryLinearLayout;
 
         public CategoriesViewHolder(View itemView) {
             super(itemView);
             categoryTextView = itemView.findViewById(R.id.category_text_view);
             categoryImageView = itemView.findViewById(R.id.category_image_view);
+            categoryLinearLayout = itemView.findViewById(R.id.category_linear_layout);
 
         }
 
 
-        public void bind(Category category, int position) {
+        public void bind(final Category category, final OnItemClickListener listener, final int position) {
             categoryTextView.setText(category.getCategoryName());
             Picasso.get().load(category.getCategoryImage()).into(categoryImageView);
+
+            categoryLinearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    listener.onClick(position);
+
+
+                }
+            });
 
         }
     }
@@ -52,7 +73,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     @Override
     public void onBindViewHolder(CategoriesViewHolder holder, int position) {
-        holder.bind(categoriesList.get(position), position);
+        holder.bind(categoriesList.get(position),listener, position);
     }
 
     @Override

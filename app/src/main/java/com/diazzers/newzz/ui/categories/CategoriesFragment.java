@@ -1,10 +1,12 @@
 package com.diazzers.newzz.ui.categories;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.diazzers.newzz.OnItemClickListener;
 import com.diazzers.newzz.R;
 import com.diazzers.newzz.adapter.ArticlesAdapter;
 import com.diazzers.newzz.adapter.CategoriesAdapter;
@@ -44,6 +47,16 @@ public class CategoriesFragment extends Fragment {
 
         initRecyclerView(v);
 
+        categoriesAdapter.addOnClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onClick(int position) {
+                categoriesViewModel.onArticleClick(position);
+
+
+            }
+        });
+
         bindViewModel();
         categoriesViewModel.loadData();
 
@@ -63,6 +76,14 @@ public class CategoriesFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Category> categories) {
                 categoriesAdapter.addData(categories);
+
+            }
+        });
+
+        categoriesViewModel.openCategory.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Log.d("lt",s);
 
             }
         });

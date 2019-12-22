@@ -25,5 +25,8 @@ public class NewzzRestClient {
     public static void getTopNewsList(RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.get(getAbsoluteUrl("top-headlines?country=ru&pageSize=100&apiKey=223135b4b6a4437097149c808de9745e"), params, responseHandler);
     }
+    public static void getBusinessCategoryNews(RequestParams params, AsyncHttpResponseHandler responseHandler){
+        client.get(getAbsoluteUrl("everything?q=бизнес&apiKey=223135b4b6a4437097149c808de9745e"), params, responseHandler);
+    }
 
 }
