@@ -19,8 +19,7 @@
 
     <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="queryBackground">@android:color/transparent</item>
-        <item name="searchIcon">@drawable/ic_toolbar_search_24dp</item>
+        <item name="searchIcon">@drawable/ic_search_toolbar_24dp</item>
         <item name="android:imeActionId">6</item>
     </style>
-
 </resources>

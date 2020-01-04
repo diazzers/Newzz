@@ -14,7 +14,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:paddingBottom="56dp">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -30,7 +29,7 @@
                 android:id="@+id/articles_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/articles_item_view">
+                tools:listitem="@layout/article_item_view">
 
             </androidx.recyclerview.widget.RecyclerView>
 

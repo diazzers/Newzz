@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">Newzz</string>
+    <string name="app_name">NewsApp</string>
     <string name="title_home">Главная</string>
     <string name="title_search">Поиск</string>
-    <string name="title_categories">Категории</string>
-    <string name="title_notifications">Уведомления</string>
-    <string name="title_user">Пользователь</string>
-    <string name="action_settings">Настройки</string>
-    <string name="share_button">Share Button</string>
-    <string name="bookmark_button">Bookmark Button</string>
+    <string name="title_bookmarks">Избранное</string>
+    <string name="share_button">Поделиться</string>
+    <string name="bookmark_button">Закладка</string>
     <string name="search_title">Поиск</string>
+    <string name="not_found">Ничего не найдено:(</string>
+    <string name="start_search">Начните вводить запрос:)</string>
 </resources>
