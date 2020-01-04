@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.diazzers.newzz.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_articleFragment"
             app:destination="@id/articleFragment"
@@ -17,10 +17,23 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.diazzers.newzz.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
+
+
+    <fragment
         android:id="@+id/navigation_categories"
         android:name="com.diazzers.newzz.ui.categories.CategoriesFragment"
         android:label="@string/title_categories"
         tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.diazzers.newzz.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/notifications_fragment" />
 
     <fragment
         android:id="@+id/navigation_user"
@@ -32,4 +45,10 @@
         android:name="com.diazzers.newzz.ui.article.ArticleFragment"
         android:label="fragment_article"
         tools:layout="@layout/fragment_article" />
+
+    <fragment
+        android:id="@+id/categoryOpenFragment"
+        android:name="com.diazzers.newzz.ui.categories.CategoryOpenFragment"
+        android:label="fragment_categoryOpen"
+        tools:layout="@layout/category_open_fragment" />
 </navigation>

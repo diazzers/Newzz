@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private HomeViewModel homeViewModel;
     private Toolbar toolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private ProgressBar progressBar;
+
 
 
     @Override
@@ -53,7 +56,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         toolbar = v.findViewById(R.id.toolbar_home);
-        toolbar.setTitle("Главная");
+        toolbar.setTitle("Главные новости");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         initRecyclerView(v);
@@ -66,7 +69,11 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
+        //Progress Bar
+        progressBar = v.findViewById(R.id.progressBarHome);
 
+
+        //
         articlesAdapter.addOnClickListener(new OnItemClickListener() {
 
             @Override
@@ -115,17 +122,24 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             public void onChanged(ArrayList<Article> articles) {
                 articlesAdapter.addData(articles);
                 mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
+        homeViewModel.loadingLiveData.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean b) {
+                if (b)progressBar.setVisibility(View.VISIBLE);
+                else progressBar.setVisibility(View.GONE);
             }
         });
 
         homeViewModel.openArticleFragment.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Navigation.findNavController(getView()).navigate(R.id.articleFragment, ArticleFragment.getBundle(s));
-            }
-        });
-    }
+        @Override
+        public void onChanged(String s) {
+            Navigation.findNavController(getView()).navigate(R.id.articleFragment, ArticleFragment.getBundle(s));
+        }
+    });
+}
 
 
     @Override

@@ -44,6 +44,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/category_linear_layout" />
+        app:layout_constraintTop_toBottomOf="@id/category_linear_layout"
+        android:layout_marginStart="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

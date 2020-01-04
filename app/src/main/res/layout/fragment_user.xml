@@ -28,26 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/login_vk_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VK"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/login_mail_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <Button
-            android:id="@+id/login_mail_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mail"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/login_vk_btn"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

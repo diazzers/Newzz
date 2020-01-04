@@ -1,18 +1,9 @@
-package com.diazzers.newzz.ui.home;
+package com.diazzers.newzz.ui.categories;
 
-import android.util.Log;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.ImageView;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.diazzers.newzz.NewzzRestClient;
-import com.diazzers.newzz.R;
-import com.diazzers.newzz.SingleLiveEvent;
-import com.diazzers.newzz.adapter.ArticlesAdapter;
 import com.diazzers.newzz.pojo.Article;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -26,25 +17,18 @@ import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
-
-public class HomeViewModel extends ViewModel {
+public class CategoryOpenViewModel extends ViewModel {
     private ArrayList<Article> articlesList;
 
     public MutableLiveData<ArrayList<Article>> articlesListLiveData;
-    public SingleLiveEvent<String> openArticleFragment;
-    public MutableLiveData<Boolean> loadingLiveData;
 
-    public HomeViewModel() {
+    public CategoryOpenViewModel() {
         articlesListLiveData = new MutableLiveData<>();
-        loadingLiveData = new MutableLiveData<>();
-        openArticleFragment = new SingleLiveEvent<>();
-
     }
 
     public void loadData() {
 
-        NewzzRestClient.getTopNewsList(
+        NewzzRestClient.getBusinessCategoryNews(
                 null, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -74,8 +58,6 @@ public class HomeViewModel extends ViewModel {
                             }
 
                             articlesListLiveData.postValue(articlesList);
-                            loadingLiveData.postValue(Boolean.FALSE);
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -85,12 +67,4 @@ public class HomeViewModel extends ViewModel {
                 });
 
     }
-
-    public void onArticleClick(int position) {
-        String url = articlesList.get(position).getUrl();
-        openArticleFragment.postValue(url);
-    }
-
-
-
 }

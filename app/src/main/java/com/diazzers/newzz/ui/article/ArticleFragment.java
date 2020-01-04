@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.diazzers.newzz.OnItemClickListener;
@@ -33,6 +34,7 @@ public class ArticleFragment extends Fragment {
 
     private WebView webView;
     private Toolbar toolbar;
+    private ProgressBar progressBar;
 
     public static ArticleFragment newInstance() {
         return new ArticleFragment();
@@ -44,6 +46,9 @@ public class ArticleFragment extends Fragment {
         Toast.makeText(getContext(),"Загрузка...",Toast.LENGTH_SHORT).show();
 
         View view = inflater.inflate(R.layout.fragment_article, container, false);
+
+        //Progress Bar
+        progressBar = view.findViewById(R.id.progressBarArticle);
 
         webView = view.findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
